@@ -39,7 +39,7 @@
 
 
 
-[프로그래밍 경력을 향상시킬 20 가지 놀라운 Java 프로젝트 아이디어] (https://ichi.pro/ko/peulogeulaeming-gyeonglyeog-eul-hyangsangsikil-20-gaji-nollaun-java-peulojegteu-aidieo-8092833478389) - [ICHI.PRO](https://ichi.pro/ko)라는 사이트에 있는 글입니다. 꽤나 난이도가 있는 흥미로운 프로그램 예제들이 제시되어 있습니다.
+[프로그래밍 경력을 향상시킬 20 가지 놀라운 Java 프로젝트 아이디어](https://ichi.pro/ko/peulogeulaeming-gyeonglyeog-eul-hyangsangsikil-20-gaji-nollaun-java-peulojegteu-aidieo-8092833478389) - [ICHI.PRO](https://ichi.pro/ko)라는 사이트에 있는 글입니다. 꽤나 난이도가 있는 흥미로운 프로그램 예제들이 제시되어 있습니다.
 
 
 
