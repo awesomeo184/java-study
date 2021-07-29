@@ -45,6 +45,9 @@ https://dev.to/composite/java-10-var-2-4f8a
 
 https://dev.to/deepu105/visualizing-memory-management-in-jvm-java-kotlin-scala-groovy-clojure-19le
 
+### checked vs unchecked
+
+https://docs.oracle.com/javase/tutorial/essential/exceptions/runtime.html
 
 
 ## 아.. 뭔가 만들어보고 싶다.
