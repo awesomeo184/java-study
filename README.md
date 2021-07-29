@@ -41,6 +41,10 @@ https://dev.to/composite/java-10-var-3o67
 
 https://dev.to/composite/java-10-var-2-4f8a
 
+### JVM의 메모리 구조
+
+https://dev.to/deepu105/visualizing-memory-management-in-jvm-java-kotlin-scala-groovy-clojure-19le
+
 
 
 ## 아.. 뭔가 만들어보고 싶다.
