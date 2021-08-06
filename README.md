@@ -2,6 +2,11 @@
 
 멋사 9기 자바 스터디 저장소입니다.
 
+
+## 영감을 받은 스터디
+
+https://github.com/whiteship/live-study
+
 ## 스터디원
 
 * 고준기([jun1378527](https://github.com/jun1378527))
