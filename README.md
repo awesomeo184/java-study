@@ -54,16 +54,16 @@ https://dev.to/deepu105/visualizing-memory-management-in-jvm-java-kotlin-scala-g
 
 https://docs.oracle.com/javase/tutorial/essential/exceptions/runtime.html
 
+### Java에서 동치성(equality) 메서드를 작성하는 방법
+
+https://www.artima.com/articles/how-to-write-an-equality-method-in-java
+
 
 ## 아.. 뭔가 만들어보고 싶다.
 
 단순히 문법 공부만 하는 것이 아니라 뭔가 만들어보면서 능동적으로 공부하고 싶을 때 참고할만한 자료들을 첨부합니다.
 
-
-
 [자바 플레이그라운드 ](https://nextstep.camp/courses/-Km5jDeTIGcN0aSqboUc)- 자바지기 박재성님이 넥스트에서 강의하신 내용을 무료로 공개해놓은 것입니다. 기본 문법만 알면 만들 수 있는 콘솔 기반의 간단한 프로그램 예제들이 수록되어 있습니다.
-
-
 
 [프로그래밍 경력을 향상시킬 20 가지 놀라운 Java 프로젝트 아이디어](https://ichi.pro/ko/peulogeulaeming-gyeonglyeog-eul-hyangsangsikil-20-gaji-nollaun-java-peulojegteu-aidieo-8092833478389) - [ICHI.PRO](https://ichi.pro/ko)라는 사이트에 있는 글입니다. 꽤나 난이도가 있는 흥미로운 프로그램 예제들이 제시되어 있습니다.
 
