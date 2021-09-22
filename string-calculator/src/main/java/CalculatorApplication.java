@@ -29,8 +29,7 @@ public class CalculatorApplication {
 
     private static Optional<MathExpression> createExpression(String userInput) {
         try{
-            var expression = new MathExpression(userInput);
-            return Optional.of(expression);
+            return Optional.of(new MathExpression(userInput));
         } catch (IllegalArgumentException e) {
             output.printIllegalInputFormatError();
             return Optional.empty();
