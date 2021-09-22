@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class ConsoleIO implements Input, Output{
 
     @Override
-    public String getInput(String prompt) {
-        System.out.print(prompt);
+    public String getExpression() {
+        System.out.print("Type a mathematical expression to calculate : ");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }

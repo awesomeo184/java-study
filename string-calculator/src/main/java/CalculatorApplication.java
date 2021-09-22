@@ -14,8 +14,7 @@ public class CalculatorApplication {
     public static void main(String[] args) {
         output.printHelp();
         while(true) {
-            var prompt = "Type a mathematical expression to calculate : ";
-            String userInput = input.getInput(prompt);
+            String userInput = input.getExpression();
 
             if (userInput.equalsIgnoreCase("EXIT"))
                 System.exit(0);
