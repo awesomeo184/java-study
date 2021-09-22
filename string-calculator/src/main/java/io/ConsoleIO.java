@@ -18,7 +18,8 @@ public class ConsoleIO implements Input, Output{
             String Calculator
             =================
             - numbers and operators must be seperated by single space
-            - type exit to exit program
+            - type HELP to see this page
+            - type EXIT to exit program
             """
         );
     }
