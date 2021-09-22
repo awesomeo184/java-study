@@ -1,6 +1,4 @@
-package engine.expression_validator;
-
-import java.util.stream.IntStream;
+package engine.validator;
 
 public interface ExpressionValidator {
     boolean isInvalidExpression(String expression);

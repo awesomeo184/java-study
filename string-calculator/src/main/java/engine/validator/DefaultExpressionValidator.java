@@ -1,6 +1,6 @@
-package engine.expression_validator;
+package engine.validator;
 
-import engine.OperatorType;
+import engine.Operators;
 
 import java.util.stream.IntStream;
 
@@ -30,10 +30,10 @@ public class DefaultExpressionValidator implements ExpressionValidator {
 
     private boolean invalidFormat(String[] elementList) {
         return IntStream.range(0, elementList.length).anyMatch(i ->
-            (i%2 != 0 && invalidNumber(elementList[i])) || (i%2 == 0) && invalidOperator(elementList[i]));
+            (i%2 != 0 && invalidOperator(elementList[i])) || (i%2 == 0) && invalidNumber(elementList[i]));
     }
 
     private boolean invalidOperator(String maybeOperator) {
-        return !OperatorType.contains(maybeOperator);
+        return !Operators.contains(maybeOperator);
     }
 }

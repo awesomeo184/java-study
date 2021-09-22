@@ -1,9 +1,8 @@
 package engine;
 
 import java.util.Arrays;
-import java.util.Optional;
 
-public enum OperatorType {
+public enum Operators {
     PLUS("+") {
         @Override
         public int calculate(int a, int b) {
@@ -31,7 +30,7 @@ public enum OperatorType {
 
     private final String OPERATOR;
 
-    OperatorType(String operator) {
+    Operators(String operator) {
         this.OPERATOR = operator;
     }
 
@@ -40,14 +39,14 @@ public enum OperatorType {
     }
 
     public static boolean contains (String operator) {
-        return Arrays.stream(OperatorType.values())
+        return Arrays.stream(Operators.values())
             .anyMatch(op -> operator.equals(op.getOperator()));
     }
 
-    public static Optional<OperatorType> operatorOf(String operator) {
-        return Arrays.stream(OperatorType.values())
+    public static Operators operatorOf(String operator) {
+        return Arrays.stream(Operators.values())
             .filter(op -> operator.equals(op.getOperator()))
-            .findAny();
+            .findAny().get();
     }
 
     public abstract int calculate(int a, int b);
