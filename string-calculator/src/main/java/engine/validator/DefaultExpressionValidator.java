@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 
 public class DefaultExpressionValidator implements ExpressionValidator {
 
+    @Override
     public boolean isInvalidExpression(String expression) {
         var elementList = expression.split(" ");
 
