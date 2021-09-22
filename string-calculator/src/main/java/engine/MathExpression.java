@@ -11,8 +11,8 @@ public class MathExpression {
         this.expression = expression;
     }
 
-    public String getExpression() {
-        return expression;
+    public String[] getExpression() {
+        return expression.split(" ");
     }
 
     private void validateLength(int length) {
