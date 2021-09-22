@@ -1,11 +1,11 @@
-package engine.domain;
+package engine;
 
 import engine.Operators;
 
 public class Calculator {
 
-    public int calcExpression(String expression) {
-        var elementList = expression.split(" ");
+    public int calcExpression(MathExpression expression) {
+        var elementList = expression.getExpression().split(" ");
         var operator = Operators.operatorOf(elementList[1]);
         var num1 = Integer.parseInt(elementList[0]);
         var num2 = Integer.parseInt(elementList[2]);
