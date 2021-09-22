@@ -1,4 +1,5 @@
 import engine.Calculator;
+import engine.Commands;
 import engine.MathExpression;
 import io.ConsoleIO;
 import io.Input;
@@ -16,8 +17,8 @@ public class CalculatorApplication {
         while(true) {
             String userInput = input.getExpression();
 
-            if (userInput.equalsIgnoreCase("EXIT"))
-                System.exit(0);
+            if (Commands.contains(userInput))
+                executeCommand(Commands.valueOf(userInput));
 
             Optional<MathExpression> expression = createExpression(userInput);
             if (expression.isEmpty()) continue;
@@ -33,6 +34,13 @@ public class CalculatorApplication {
         } catch (IllegalArgumentException e) {
             output.printIllegalInputFormatError();
             return Optional.empty();
+        }
+    }
+
+    private static void executeCommand(Commands command) {
+        switch (command) {
+            case EXIT -> System.exit(0);
+            case HELP -> output.printHelp();
         }
     }
 }
