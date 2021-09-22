@@ -16,14 +16,16 @@ public class CalculatorApplication {
         output.printHelp();
         while(true) {
             String userInput = input.getExpression();
-
             if (Commands.contains(userInput)) {
                 executeCommand(Commands.valueOf(userInput));
                 continue;
             }
 
             Optional<MathExpression> expression = createExpression(userInput);
-            if (expression.isEmpty()) continue;
+            if (expression.isEmpty()) {
+                output.printIllegalInputFormatError();
+                continue;
+            }
 
             int result = calculator.calcExpression(expression.get());
             output.printResult(result);
@@ -34,7 +36,6 @@ public class CalculatorApplication {
         try{
             return Optional.of(new MathExpression(userInput));
         } catch (IllegalArgumentException e) {
-            output.printIllegalInputFormatError();
             return Optional.empty();
         }
     }
