@@ -3,16 +3,17 @@ package engine;
 import java.util.stream.IntStream;
 
 public class MathExpression {
-    private final String expression;
+    private final String[] expression;
 
     public MathExpression(String expression) {
-        validateLength(expression.split(" ").length);
-        validateFormat(expression.split(" "));
-        this.expression = expression;
+        var expressionSplit = expression.split(" ");
+        validateLength(expressionSplit.length);
+        validateFormat(expressionSplit);
+        this.expression = expressionSplit;
     }
 
     public String[] getExpression() {
-        return expression.split(" ");
+        return expression;
     }
 
     private void validateLength(int length) {
