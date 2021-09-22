@@ -10,13 +10,13 @@ public class DefaultExpressionValidator implements ExpressionValidator {
         var elementList = expression.split(" ");
 
         // 최소 연산자 1개와 숫자 2개가 필요
-        if (invalidLength(elementList.length)) return false;
+        if (invalidLength(elementList.length)) return true;
         // 마지막 요소는 숫자
-        if (invalidNumber(elementList[elementList.length - 1])) return false;
+        if (invalidNumber(elementList[elementList.length - 1])) return true;
         // 숫자와 연산자가 번갈아가며 등장
-        if (invalidFormat(elementList)) return false;
+        if (invalidFormat(elementList)) return true;
 
-        return true;
+        return false;
     }
 
     private boolean invalidLength(int length) {
