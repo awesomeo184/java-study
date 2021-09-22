@@ -5,6 +5,7 @@ import io.ConsoleIO;
 import io.Input;
 import io.Output;
 
+import java.util.Locale;
 import java.util.Optional;
 
 public class CalculatorApplication {
@@ -17,15 +18,12 @@ public class CalculatorApplication {
         while(true) {
             String userInput = input.getExpression();
             if (Commands.contains(userInput)) {
-                executeCommand(Commands.valueOf(userInput));
+                executeCommand(Commands.valueOf(userInput.toUpperCase()));
                 continue;
             }
 
             Optional<MathExpression> expression = createExpression(userInput);
-            if (expression.isEmpty()) {
-                output.printIllegalInputFormatError();
-                continue;
-            }
+            if (expression.isEmpty()) continue;
 
             int result = calculator.calcExpression(expression.get());
             output.printResult(result);
@@ -36,14 +34,20 @@ public class CalculatorApplication {
         try{
             return Optional.of(new MathExpression(userInput));
         } catch (IllegalArgumentException e) {
+            output.printIllegalInputFormatError(e);
             return Optional.empty();
         }
     }
 
     private static void executeCommand(Commands command) {
         switch (command) {
-            case EXIT -> System.exit(0);
-            case HELP -> output.printHelp();
+            case EXIT -> {
+                output.printExit();
+                System.exit(0);
+            }
+            case HELP -> {
+                output.printHelp();
+            }
         }
     }
 }

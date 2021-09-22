@@ -22,6 +22,9 @@ public class MathExpression {
     }
 
     private void validateFormat(String[] expression) {
+        if (invalidNumber(expression[expression.length-1]))
+            throw new IllegalArgumentException("expression must end with a number");
+
         boolean invalid = IntStream.range(0, expression.length).anyMatch(i ->
             (i % 2 != 0 && invalidOperator(expression[i])) || (i % 2 == 0) && invalidNumber(expression[i]));
 

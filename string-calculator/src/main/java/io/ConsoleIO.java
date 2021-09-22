@@ -1,5 +1,6 @@
 package io;
 
+import java.util.IllegalFormatException;
 import java.util.Scanner;
 
 public class ConsoleIO implements Input, Output{
@@ -25,18 +26,8 @@ public class ConsoleIO implements Input, Output{
     }
 
     @Override
-    public void printIllegalOperatorError() {
-        System.out.println("[ERROR] Illegal Operator Error");
-    }
-
-    @Override
-    public void printIllegalNumberError() {
-        System.out.println("[ERROR] Illegal Number Error");
-    }
-
-    @Override
-    public void printIllegalInputFormatError() {
-        System.out.println("[ERROR] Illegal Input Format Error");
+    public void printIllegalInputFormatError(IllegalArgumentException e) {
+        System.out.println("[ERROR] Illegal Input Format Error : " + e.getMessage());
     }
 
     @Override

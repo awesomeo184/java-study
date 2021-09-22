@@ -1,10 +1,10 @@
 package io;
 
+import java.util.IllegalFormatException;
+
 public interface Output {
     void printHelp();
-    void printIllegalOperatorError();
-    void printIllegalNumberError();
-    void printIllegalInputFormatError();
+    void printIllegalInputFormatError(IllegalArgumentException e);
     void printResult(int num);
     void printExit();
 }
