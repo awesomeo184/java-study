@@ -1,11 +1,9 @@
-import engine.calculator.Calculator;
-import engine.expression_validator.DefaultExpressionValidator;
-import engine.expression_validator.ExpressionValidator;
+import engine.domain.Calculator;
+import engine.validator.DefaultExpressionValidator;
+import engine.validator.ExpressionValidator;
 import io.ConsoleIO;
 import io.Input;
 import io.Output;
-
-import java.util.Locale;
 
 public class CalculatorApplication {
     private static final Input input = new ConsoleIO();
@@ -21,8 +19,14 @@ public class CalculatorApplication {
 
             if (userInput.equalsIgnoreCase("EXIT"))
                 System.exit(0);
-            if (validator.isInvalidExpression(userInput))
+
+            if (validator.isInvalidExpression(userInput)) {
                 output.printIllegalInputFormatError();
+                continue;
+            }
+
+            int result = calculator.calcExpression(userInput);
+            output.printResult(result);
         }
     }
 }
