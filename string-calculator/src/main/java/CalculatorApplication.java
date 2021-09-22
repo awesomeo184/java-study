@@ -17,8 +17,10 @@ public class CalculatorApplication {
         while(true) {
             String userInput = input.getExpression();
 
-            if (Commands.contains(userInput))
+            if (Commands.contains(userInput)) {
                 executeCommand(Commands.valueOf(userInput));
+                continue;
+            }
 
             Optional<MathExpression> expression = createExpression(userInput);
             if (expression.isEmpty()) continue;
