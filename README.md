@@ -1,71 +1,32 @@
-# 멋사 9기 자바 스터디
+# 문자열 계산기
 
-멋사 9기 자바 스터디 저장소입니다.
+## 기능적 요구사항
+* 사용자가 입력한 문자열 값에 따라 사칙연산을 수행할 수 있는 계산기를 구현해야 한다.
+* 문자열 계산기는 사칙연산의 계산 우선순위가 아닌 입력 값에 따라 계산 순서가 결정된다. 즉, 수학에서는 곱셈, 나눗셈이 덧셈, 뺄셈 보다 먼저 계산해야 하지만 이를 무시한다.
+* 예를 들어 `2 + 3 * 4 / 2`와 같은 문자열을 입력할 경우 `(2 + 3) * 4 / 2` 실행 결과인 10을 출력해야 한다.
+* 입력 가능한 숫자는 양의 정수로 제한한다.
+* 사용자가 `exit`을 입력하기 전까지 기능을 반복적으로 수행한다.
+* 예외가 발생하면 `[ERROR] 에러 메시지` 형식으로 메시지를 출력하고 입력을 다시 받는다.
+	* 예를 들어, 입력으로  `2 q 4`  이 들어온다면 `[ERROR] 잘못된 연산자를 사용하셨습니다` 를 출력하고 입력을 다시 받는다.
+* 입출력 메시지나 에러 메시지는 본인이 원하는대로 하면 된다.
 
+## 프로그래밍 제한사항
+* 메서드는 하나의 일만 하도록한다.
+* 하나의 메서드가 10 라인을 넘지 않도록 한다. 어렵다면 최대 15 라인을 넘지 않도록 해본다.
+* `else` 예약어를 사용하지 않는다.
+* 인덴트는 한 단계를 넘지 않도록 한다. 예를 들어 for문 안에 if 문이 있다면 인덴트는 두 단계이다. 너무 어렵다면 두 단계도 허용한다.
+* 코드를 더 개선해보고 싶다면 [객체지향 생활 체조 9원칙](https://developerfarm.wordpress.com/2012/02/03/object_calisthenics_summary/)을 참고해 리팩토링 해본다.
+* 기능을 구현하기 전에 README.md에 구현할 기능 목록을 정리해 추가한다.
+* README.md 에 기능 요구사항을 정리해보고 적절한 단위로 커밋을 나눠서 커밋해보자.
+* git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가한다.
+	*  [AngularJS Commit Message Conventions](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 를 참고해 commit log를 남긴다.
 
-## 영감을 받은 스터디
+## 구현 기능
 
-https://github.com/whiteship/live-study
-
-## 스터디원
-
-* 고준기([jun1378527](https://github.com/jun1378527))
-* 윤영택([JungTag](https://github.com/JungTag))
-* 이상민([sangmin7648](https://github.com/sangmin7648))
-* 이영주([Jujiter](https://github.com/Jugiter))
-* 전재완 ([jaythesurfer](https://github.com/jaythesurfer))
-* 정수현 ([awesomeo184](https://github.com/awesomeo184))
-
-
-## 스터디 규칙
-
-1. 매주 공부할 주제가 이슈에 등록됩니다.
-2. 매주 화요일 자정까지 해당 주차의 이슈에 대한 내용을 공부하고 댓글로 링크를 첨부합니다.
-   	* 공부한 내용을 블로그, 레포지토리 등 공개된 곳에 업로드하고 링크를 첨부해주시면 됩니다.
-   	* 공부하면서 **잘 이해가 안 가는 부분**, 정확한지 **애매한 부분**, **스터디원들끼리 더 얘기해보면 좋겠다고 생각되는 부분**이 있으면 이에 대한 코멘트를 링크와 함께 남겨주세요. 
- 3. 매주 목요일 10시 온라인 회의를 합니다.
-    * 회의 전까지 다른 스터디원들이 남긴 코멘트에 대해 고민해오세요.
-
-
-
-## 참고자료
-
-무엇이든 상관 없습니다. 참고할만한 책과 링크 공유드립니다.
-
-### 교재 및 강의
-
-[자바의 정석](https://www.youtube.com/watch?v=oJlCC1DutbA&list=PLW2UjW795-f6xWA2_MUhEVgPauhGl3xIp) - 저자 직강 유튜브 강의 링크입니다. 저는 이걸로 공부했는데 기본 개념이나 동작 원리를 자세하게 설명해줘서 좋았습니다. 강의에는 건너뛰는 부분이 좀 있어서 책과 함께 공부하시는거 추천합니다.
-
-[이것이 자바다](https://www.youtube.com/watch?v=Sos11X7wy1M&list=PLVsNizTWUw7FPokuK8Cmlt72DQEt7hKZu) - 마찬가지로 저자 직강 유튜브 강의입니다.
-
-[소설같은 자바](http://m.yes24.com/goods/detail/4250470) - 옛날 책이라 자바 8에 대한 내용이 없습니다. 근데 앞부분에 데이터 타입이랑 클래스에 대해 설명하는 부분이 너무 좋아서 공유합니다. 이 책은 그 부분만 읽으면 됩니다. 학교 도서관에 있습니다.
-
-### Java 10 var 제대로 사용하기
-
-https://dev.to/composite/java-10-var-3o67
-
-https://dev.to/composite/java-10-var-2-4f8a
-
-### JVM의 메모리 구조
-
-https://dev.to/deepu105/visualizing-memory-management-in-jvm-java-kotlin-scala-groovy-clojure-19le
-
-### checked vs unchecked
-
-https://docs.oracle.com/javase/tutorial/essential/exceptions/runtime.html
-
-### Java에서 동치성(equality) 메서드를 작성하는 방법
-
-https://www.artima.com/articles/how-to-write-an-equality-method-in-java
-
-
-## 아.. 뭔가 만들어보고 싶다.
-
-단순히 문법 공부만 하는 것이 아니라 뭔가 만들어보면서 능동적으로 공부하고 싶을 때 참고할만한 자료들을 첨부합니다.
-
-[자바 플레이그라운드 ](https://nextstep.camp/courses/-Km5jDeTIGcN0aSqboUc)- 자바지기 박재성님이 넥스트에서 강의하신 내용을 무료로 공개해놓은 것입니다. 기본 문법만 알면 만들 수 있는 콘솔 기반의 간단한 프로그램 예제들이 수록되어 있습니다.
-
-[프로그래밍 경력을 향상시킬 20 가지 놀라운 Java 프로젝트 아이디어](https://ichi.pro/ko/peulogeulaeming-gyeonglyeog-eul-hyangsangsikil-20-gaji-nollaun-java-peulojegteu-aidieo-8092833478389) - [ICHI.PRO](https://ichi.pro/ko)라는 사이트에 있는 글입니다. 꽤나 난이도가 있는 흥미로운 프로그램 예제들이 제시되어 있습니다.
-
-
-
+- [ ] 입력된 문자열을 파싱한다.
+	- [ ] 연산자와 피연산자는 공백으로 구분되도록 제약하며 그렇지 않은 경우 오류메시지를 출력한다.
+	- [ ] 입력 가능한 피연산자는 정수여야한다.
+	- [ ] 식은 피연산자로 시작해서 피연산자로 끝나야한다.
+	- [ ] 연산자와 피연산자는 번갈아 등장해야한다.
+- [ ] 연산을 처리한다.
+- [ ] 예외가 발생할 경우 예외 메시지를 출력하고 입력을 다시 받는다.
