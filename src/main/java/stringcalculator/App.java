@@ -15,21 +15,28 @@ public class App {
 
     private void run() {
         while (true) {
-            System.out.print("식을 입력하세요(종료를 원할 경우 EXIT 을 입력하세요 ): ");
-            String input = scanner.nextLine();
+            String input = getInput();
 
             if (input.equalsIgnoreCase("EXIT")) {
                 break;
             }
 
             try {
-                Expression expression = new Expression(input);
-                System.out.println(expression.evaluate());
+                System.out.println(new Expression(input).evaluate());
             } catch (Exception e) {
-                System.out.println(e.getMessage());
-                System.out.println();
+                printErrorMessage(e);
             }
         }
         scanner.close();
+    }
+
+    private void printErrorMessage(Exception e) {
+        System.out.println(e.getMessage());
+        System.out.println();
+    }
+
+    private String getInput() {
+        System.out.print("식을 입력하세요(종료를 원할 경우 EXIT 을 입력하세요 ): ");
+        return scanner.nextLine();
     }
 }

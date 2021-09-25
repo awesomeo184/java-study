@@ -10,6 +10,7 @@ import java.util.Stack;
 public class Expression {
 
     private static final List<String> operators = new ArrayList<>(Arrays.asList("+", "-", "/", "*"));
+    private static final int MIM_LENGTH = 3;
     private final Queue<String> elements = new LinkedList<>();
 
     public Expression(String input) {
@@ -21,7 +22,7 @@ public class Expression {
 
     private void validate(String[] expression) {
 
-        if (expression.length < 3) {
+        if (expression.length < MIM_LENGTH) {
             throw new IllegalArgumentException("피연산자는 두 개 이상, 연산자는 한 개 이상이어야 합니다.");
         }
 
@@ -32,7 +33,6 @@ public class Expression {
             }
             assertValidOrder(i, elem);
         }
-
     }
 
     private void assertStartsAndEndsWithNumber(String elem) {
@@ -51,6 +51,9 @@ public class Expression {
         }
     }
 
+    /*
+    * 첫 번째 인자는 반드시 숫자여야하고, 숫자와 연산자는 번갈아 등장해야하므로 연산자는 항상 홀수 인덱스에 나타나야한다.
+    * */
     private boolean isOperatorPosition(int i) {
         return i % 2 != 0;
     }
