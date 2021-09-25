@@ -3,12 +3,33 @@
  */
 package stringcalculator;
 
+import java.util.Scanner;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        new App().run();
+    }
+
+    private void run() {
+        while (true) {
+            System.out.print("식을 입력하세요(종료를 원할 경우 EXIT 을 입력하세요 ): ");
+            String input = scanner.nextLine();
+
+            if (input.equalsIgnoreCase("EXIT")) {
+                break;
+            }
+
+            try {
+                Expression expression = new Expression(input);
+                System.out.println(expression.evaluate());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                System.out.println();
+            }
+        }
+        scanner.close();
     }
 }
