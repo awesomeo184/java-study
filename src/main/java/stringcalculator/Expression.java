@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Expression {
 
@@ -12,16 +13,16 @@ public class Expression {
     private final Queue<String> elements = new LinkedList<>();
 
     public Expression(String input) {
-        String[] splitByBlank = input.split(" ");
-        removeBlank(splitByBlank);
-        validate(splitByBlank);
-        elements.addAll(Arrays.asList(splitByBlank));
+        String[] splicedExpression = input.split(" ");
+        removeBlank(splicedExpression);
+        validate(splicedExpression);
+        elements.addAll(Arrays.asList(splicedExpression));
     }
 
     private void validate(String[] expression) {
 
-        if (expression.length == 0) {
-            throw new IllegalArgumentException("빈 값이 입력되었습니다.");
+        if (expression.length < 3) {
+            throw new IllegalArgumentException("피연산자는 두 개 이상, 연산자는 한 개 이상이어야 합니다.");
         }
 
         for (int i = 0; i < expression.length; i++) {
@@ -55,7 +56,7 @@ public class Expression {
     }
 
     private void assertOperatorFormat(String target) {
-        if (!operators.contains(target)) {
+        if (!isOperator(target)) {
             throw new IllegalArgumentException("[ERROR] 올바르지 않은 형식입니다.");
         }
     }
@@ -78,5 +79,49 @@ public class Expression {
 
     public Queue<String> getElements() {
         return elements;
+    }
+
+    public int evaluate() {
+
+        Stack<Integer> stack = new Stack<>();
+
+        while (!elements.isEmpty()) {
+            String elem = elements.poll();
+
+            if (isOperator(elem)) {
+                int first = stack.pop();
+                int second = Integer.parseInt(elements.poll());
+                stack.push(calculate(elem, first, second));
+                continue;
+            }
+
+            stack.push(Integer.parseInt(elem));
+        }
+
+        return stack.pop();
+    }
+
+    private boolean isOperator(String elem) {
+        return operators.contains(elem);
+    }
+
+    private int calculate(String operator, int first, int second) {
+        if (operator.equals("+")) {
+            return first + second;
+        }
+
+        if (operator.equals("-")) {
+            return first - second;
+        }
+
+        if (operator.equals("/")) {
+            return first / second;
+        }
+
+        if (operator.equals("*")) {
+            return first * second;
+        }
+
+        throw new IllegalArgumentException("처리할 수 없는 연산자 = " + operator);
     }
 }

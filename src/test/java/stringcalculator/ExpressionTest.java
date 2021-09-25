@@ -14,8 +14,7 @@ public class ExpressionTest {
         String input = " ";
 
         assertThatThrownBy(() -> new Expression(input))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessageContaining("빈 값");
+            .isInstanceOf(IllegalArgumentException.class);
     }
 
 
@@ -86,5 +85,45 @@ public class ExpressionTest {
 
         assertThatThrownBy(() -> new Expression(continuousOperator))
             .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("1 + 2 + 3 = 6")
+    void testProcessExpr1() {
+        Expression expression = new Expression("1 + 2 + 3");
+
+        int result = expression.evaluate();
+
+        assertThat(result).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("2 * 3 + 4 = 10")
+    void testProcessExpr2() {
+        Expression expression = new Expression("2 * 3 + 4");
+
+        int result = expression.evaluate();
+
+        assertThat(result).isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("6 / 3 = 2")
+    void testProcessExpr3() {
+        Expression expression = new Expression("6 / 3");
+
+        int result = expression.evaluate();
+
+        assertThat(result).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("6 - 1 - 2 - 3 = 0")
+    void testProcessExpr4() {
+        Expression expression = new Expression("6 - 1 - 2 - 3");
+
+        int result = expression.evaluate();
+
+        assertThat(result).isEqualTo(0);
     }
 }
