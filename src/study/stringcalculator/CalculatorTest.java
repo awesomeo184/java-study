@@ -8,7 +8,9 @@ public class CalculatorTest {
 
         while (true) {
             String input = receiveInput();
+            ErrorChecker checker = new ErrorChecker();
             String[] tokens = input.split(" ");
+            if (!checker.checkTokens(tokens)) continue;
             double result = calculator.getResult(tokens);
             System.out.println(formatResult(result));
         }
