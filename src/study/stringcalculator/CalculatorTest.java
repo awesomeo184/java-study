@@ -19,6 +19,7 @@ public class CalculatorTest {
 
         System.out.println("실행할 연산을 입력해주세요:");
         String input = sc.nextLine().replaceAll("\\s+", " ");
+
         if (input.equals("exit")) {
             System.out.println("프로그램을 종료합니다.");
             System.exit(0);

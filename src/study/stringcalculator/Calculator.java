@@ -8,19 +8,23 @@ public class Calculator {
     public double getResult(String[] tokens) {
         for (int i=0; i<tokens.length; i++) {
             String token = tokens[i];
-            if (i == 0) {
-                temp = Integer.parseInt(token);
-                continue;
-            }
-            if (i % 2 == 0) {
-                operand = Integer.parseInt(token);
-                temp = calculate(temp, operator, operand);
-            }
-            if (i % 2 != 0) {
-                operator = token;
-            }
+            decideNextOperation(i, token);
         }
         return temp;
+    }
+
+    public void decideNextOperation(int i, String token) {
+        if (i == 0) {
+            temp = Integer.parseInt(token);
+            return;
+        }
+        if (i % 2 == 0) {
+            operand = Integer.parseInt(token);
+            temp = calculate(temp, operator, operand);
+        }
+        if (i % 2 != 0) {
+            operator = token;
+        }
     }
 
     public double calculate(double temp, String operator, int operand) {
