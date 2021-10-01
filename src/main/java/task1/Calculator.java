@@ -1,4 +1,4 @@
-package string;
+package task1;
 
 public class Calculator {
     double temp = 0;

@@ -1,4 +1,4 @@
-package string;
+package task1;
 
 public class ErrorChecker {
     String errorMsg = "[ERROR] ";

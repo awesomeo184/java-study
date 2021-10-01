@@ -1,14 +1,14 @@
-package string;
+package task1;
 
 import java.util.Scanner;
 
 public class CalculatorTest {
     public static void main(String[] args) {
-        study.stringcalculator.Calculator calculator = new study.stringcalculator.Calculator();
+        task1.Calculator calculator = new task1.Calculator();
 
         while (true) {
             String input = receiveInput();
-            study.stringcalculator.ErrorChecker checker = new study.stringcalculator.ErrorChecker();
+            task1.ErrorChecker checker = new task1.ErrorChecker();
             String[] tokens = input.split(" ");
             if (!checker.checkTokens(tokens)) continue;
             double result = calculator.getResult(tokens);
