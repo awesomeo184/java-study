@@ -7,8 +7,12 @@ import java.util.Scanner;
 public class Application {
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
+
         GameController gameController = new GameController();
-        gameController.run(scanner);
-        // TODO 구현 진행
+        try {
+            gameController.run(scanner);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

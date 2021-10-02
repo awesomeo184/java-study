@@ -14,17 +14,13 @@ public class GameController {
     private final List<Car> cars = new ArrayList<>();
     private int round;
 
-    public void run(Scanner scanner) {
-        try{
-            setCars(scanner);
-            setRound(scanner);
-            printResult();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public void run(Scanner scanner){
+        setCars(scanner);
+        setRound(scanner);
+        printResult();
     }
 
-    private void setCars(Scanner scanner) throws IllegalArgumentException {
+    private void setCars(Scanner scanner){
         List<String> names;
         String[] input;
 
@@ -35,7 +31,7 @@ public class GameController {
         names.forEach(name -> cars.add(new Car(name)));
     }
 
-    private void setRound(Scanner scanner) throws IllegalArgumentException {
+    private void setRound(Scanner scanner) {
         String input;
 
         System.out.println("시도할 회수는 몇회인가요?");
@@ -84,7 +80,7 @@ public class GameController {
         System.out.println(raceResult.entrySet().stream().filter(m -> m.getValue() == maxPosition).map(Map.Entry::getKey).collect(Collectors.joining(", ")));
     }
 
-    private void validateNames(List<String> names) throws IllegalArgumentException{
+    private void validateNames(List<String> names) {
         checkOverlappingNames(names);
         names.forEach(this::validateName);
     }
