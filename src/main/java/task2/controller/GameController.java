@@ -4,19 +4,24 @@ import task2.racingcar.Car;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GameController {
     private static final int MIN_CAR_NAME_LENGTH = 1;
     private static final int MAX_CAR_NAME_LENGTH = 5;
     private static final int MIN_ROUND_COUNT = 1;
 
-    private List<Car> cars = new ArrayList<>();
+    private final List<Car> cars = new ArrayList<>();
     private int round;
 
     public void run(Scanner scanner) {
-        setCars(scanner);
-        setRound(scanner);
-        printResult();
+        try{
+            setCars(scanner);
+            setRound(scanner);
+            printResult();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void setCars(Scanner scanner) throws IllegalArgumentException {
@@ -27,9 +32,7 @@ public class GameController {
         input = scanner.nextLine().split(",");
         names = Arrays.stream(input).map(String::trim).collect(Collectors.toList());
         validateNames(names);
-        names.forEach(name -> {
-            cars.add(new Car(name));
-        });
+        names.forEach(name -> cars.add(new Car(name)));
     }
 
     private void setRound(Scanner scanner) throws IllegalArgumentException {
@@ -39,19 +42,51 @@ public class GameController {
         input = scanner.nextLine().trim();
         validateRound(input);
         round = Integer.parseInt(input);
+        System.out.println();
     }
 
     private void printResult() {
+        HashMap<String,Integer> raceResult = new HashMap<>();
 
+        printRacingResult(raceResult);
+        printWinners(raceResult);
     }
 
+    private void printRacingResult(HashMap<String,Integer> raceResult) {
+        System.out.println("실행 결과");
+        for (int i = 0; i < round; i++) {
+            race(raceResult);
+            System.out.println();
+        }
+    }
+
+    private void race(HashMap<String,Integer> raceResult) {
+        cars.forEach(car -> {
+            car.run();
+            String name = car.getName();
+            int position = car.getPosition();
+            raceResult.put(name, position);
+            printEachCarRacingResult(name, position);
+        });
+    }
+
+    private void printEachCarRacingResult(String name, int position) {
+        StringBuilder msg = new StringBuilder(name + " : ");
+        Optional<String> formattedPosition = Stream.generate(() -> "-").limit(position).reduce((a, b) -> a + b);
+        formattedPosition.ifPresent(msg::append);
+        System.out.println(msg);
+    }
+
+    private void printWinners(HashMap<String,Integer> raceResult) {
+        int maxPosition = Collections.max(raceResult.values());
+
+        System.out.println("최종 우승자");
+        System.out.println(raceResult.entrySet().stream().filter(m -> m.getValue() == maxPosition).map(Map.Entry::getKey).collect(Collectors.joining(", ")));
+    }
 
     private void validateNames(List<String> names) throws IllegalArgumentException{
         checkOverlappingNames(names);
-
-        for(String name:names) {
-            validateName(name);
-        }
+        names.forEach(this::validateName);
     }
 
     private void validateName(String name) {
