@@ -3,6 +3,8 @@
  */
 package racingcar;
 
+import static java.util.stream.Collectors.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,40 +21,40 @@ public class App {
 
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
-        List<Car> winners = new ArrayList<>();
 
         List<Car> cars = makeCars(scanner);
         int trial = getTrial(scanner);
+        List<Car> winners = runGame(cars, trial);
+        System.out.println(getResultMessage(winners));
+    }
 
+    private static String getResultMessage(List<Car> winners) {
+        return "최종 우승자: " + winners.stream()
+            .map(Car::getName)
+            .collect(joining(", "));
+    }
+
+    private static List<Car> getWinners(List<Car> cars) {
+        Car max = Collections.max(cars);
+        return cars.stream()
+            .filter(car -> car.isSamePositionWith(max))
+            .collect(toList());
+    }
+
+    private static List<Car> runGame(List<Car> cars, int trial) {
         System.out.println("실행 결과");
         for (int i = 0; i < trial; i++) {
-            for (Car car : cars) {
-                car.move(RandomUtils.nextInt(0, 9));
-                System.out.println(car);
-            }
-            System.out.println();
+            runPhase(cars);
         }
+        return getWinners(cars);
+    }
 
-        Car max = Collections.max(cars);
+    private static void runPhase(List<Car> cars) {
         for (Car car : cars) {
-            if (car.getPosition() == max.getPosition()) {
-                winners.add(car);
-            }
+            car.move(RandomUtils.nextInt(0, 9));
+            System.out.println(car);
         }
-
-        StringBuilder sb = new StringBuilder();
-        sb.append("최종 우승자: ");
-        for (int i = 0; i < winners.size(); i++) {
-            String name = winners.get(i).getName();
-
-            if (i == winners.size() - 1) {
-                sb.append(name);
-                break;
-            }
-            sb.append(name).append(", ");
-        }
-
-        System.out.println(sb);
+        System.out.println();
     }
 
     private static int getTrial(Scanner scanner) {

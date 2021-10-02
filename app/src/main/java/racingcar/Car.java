@@ -38,4 +38,8 @@ public class Car implements Comparable<Car>{
     public String getName() {
         return name;
     }
+
+    public boolean isSamePositionWith(Car max) {
+        return position == max.position;
+    }
 }
