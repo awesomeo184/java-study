@@ -106,11 +106,12 @@ public class GameController {
 
     private void validateRound(String round){
         try {
-            if (Integer.parseInt(round) < MIN_ROUND_COUNT) {
-                throw new IllegalArgumentException("[ERROR] 시도 횟수는 1 이상이어야 한다.");
-            }
+            Integer.parseInt(round);
         } catch (Exception e) {
             throw new IllegalArgumentException("[ERROR] 시도 횟수는 숫자여야 한다.");
+        }
+        if (Integer.parseInt(round) < MIN_ROUND_COUNT) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 1 이상이어야 한다.");
         }
     }
 
