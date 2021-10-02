@@ -3,7 +3,11 @@
  */
 package racingcar;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
+import utils.RandomUtils;
 
 public class App {
 
@@ -15,7 +19,69 @@ public class App {
 
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
-        // TODO 구현 진행
+        List<Car> winners = new ArrayList<>();
+
+        List<Car> cars = makeCars(scanner);
+        int trial = getTrial(scanner);
+
+        System.out.println("실행 결과");
+        for (int i = 0; i < trial; i++) {
+            for (Car car : cars) {
+                car.move(RandomUtils.nextInt(0, 9));
+                System.out.println(car);
+            }
+            System.out.println();
+        }
+
+        Car max = Collections.max(cars);
+        for (Car car : cars) {
+            if (car.getPosition() == max.getPosition()) {
+                winners.add(car);
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("최종 우승자: ");
+        for (int i = 0; i < winners.size(); i++) {
+            String name = winners.get(i).getName();
+
+            if (i == winners.size() - 1) {
+                sb.append(name);
+                break;
+            }
+            sb.append(name).append(", ");
+        }
+
+        System.out.println(sb);
+    }
+
+    private static int getTrial(Scanner scanner) {
+        System.out.println("시도횟수를 입력해주세요");
+        try {
+            int input = scanner.nextInt();
+            validateTrial(input);
+            return input;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getTrial(scanner);
+        }
+    }
+
+    private static List<Car> makeCars(Scanner scanner) {
+        List<Car> result = new ArrayList<>();
+        System.out.print("참가자를 입력해주세요.(,로 구분): ");
+
+        try {
+            String[] names = splitNamesBySeparator(scanner.nextLine());
+            for (String name : names) {
+                validateCarName(name);
+                result.add(new Car(name));
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return makeCars(scanner);
+        }
+        return result;
     }
 
 
