@@ -21,7 +21,7 @@
     - [x] 시도 횟수가 100을 초과하는 경우
 
 * Car
-- [ ] void move(int random): random이 4 이상 9 이하일 경우 이동
+- [x] void move(int random): random이 4 이상 9 이하일 경우 이동
 
 
 ## 고민사항
