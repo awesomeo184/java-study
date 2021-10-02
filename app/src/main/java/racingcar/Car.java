@@ -11,4 +11,18 @@ public class Car {
 
     // 추가 기능 구현
 
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void move(int random) {
+        if (isAbleToMove(random)) {
+            position++;
+        }
+    }
+
+    private boolean isAbleToMove(int random) {
+        return random >= 4 && random <= 9;
+    }
 }
