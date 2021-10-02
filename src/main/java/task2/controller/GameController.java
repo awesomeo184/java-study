@@ -81,8 +81,12 @@ public class GameController {
     }
 
     private void validateNames(List<String> names) {
-        checkOverlappingNames(names);
-        names.forEach(this::validateName);
+        HashSet<String> nameSet = new HashSet<>(names);
+
+        names.forEach(name -> {
+            validateName(name);
+            checkOverlappingName(nameSet, name);
+        });
     }
 
     private void validateName(String name) {
@@ -94,11 +98,11 @@ public class GameController {
         }
     }
 
-    private void checkOverlappingNames(List<String> names) {
-        HashSet<String> set = new HashSet<>(names);
-        if (set.size() != names.size()) {
+    private void checkOverlappingName(HashSet<String> nameSet, String name) {
+        if (nameSet.contains(name)) {
             throw new IllegalArgumentException("[ERROR] 자동차의 이름은 고유해야만 한다.");
         }
+        nameSet.add(name);
     }
 
     private void validateRound(String round){
