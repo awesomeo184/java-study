@@ -10,4 +10,31 @@ public class App {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
     }
+
+
+    public static void validateCarName(String name) {
+        if (name.isBlank()) {
+            throw new IllegalArgumentException("[ERROR] 이름이 공백 혹은 빈 문자열입니다.");
+        }
+        if (name.length() > 5) {
+            throw new IllegalArgumentException("[ERROR] 이름은 5자 이하여아합니다.");
+        }
+    }
+
+    public static void validateTrial(int trial) {
+        if (trial > 100) {
+            throw new IllegalArgumentException("[ERROR] 시도 횟수는 100회 이하여야 합니다.");
+        }
+    }
+
+    public static String[] splitNamesByComma(String input) {
+        String[] names = input.split(",");
+        if (names.length <= 1) {
+            throw new IllegalArgumentException("[ERROR] 참가자는 2인 이상이어야 합니다");
+        }
+        if (names.length > 10) {
+            throw new IllegalArgumentException("[ERROR] 참가자는 10인 이하여야 합니다.");
+        }
+        return names;
+    }
 }
