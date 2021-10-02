@@ -22,7 +22,7 @@ public class Car {
         return position;
     }
 
-    public void race() {
+    public void run() {
         int randomValue = RandomUtils.nextInt(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
         if (randomValue >= FORWARD_CRITERIA) {
             position += 1;
