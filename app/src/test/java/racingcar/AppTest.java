@@ -43,7 +43,7 @@ class AppTest {
         String input = "toby,brown,kenny";
 
         //when
-        String[] names = App.splitNamesByComma(input);
+        String[] names = App.splitNamesBySeparator(input);
 
         // then
         assertThat(names).containsOnly("toby", "brown", "kenny");
@@ -55,7 +55,7 @@ class AppTest {
         String input = "one";
 
         assertThatThrownBy(
-            () -> App.splitNamesByComma(input)).isInstanceOf(IllegalArgumentException.class);
+            () -> App.splitNamesBySeparator(input)).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
@@ -64,6 +64,6 @@ class AppTest {
         String input = "1,2,3,4,5,6,7,8,9,10,11";
 
         assertThatThrownBy(
-            () -> App.splitNamesByComma(input)).isInstanceOf(IllegalArgumentException.class);
+            () -> App.splitNamesBySeparator(input)).isInstanceOf(IllegalArgumentException.class);
     }
 }

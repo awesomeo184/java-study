@@ -6,6 +6,13 @@ package racingcar;
 import java.util.Scanner;
 
 public class App {
+
+    private static final String SEPARATOR = ",";
+    private static final int MAXIMUM_TRIAL = 100;
+    private static final int MAXIMUM_CAR_NAME_LENGTH = 5;
+    private static final int MINIMUM_PLAYER = 2;
+    private static final int MAXIMUM_PLAYER = 10;
+
     public static void main(String[] args) {
         final Scanner scanner = new Scanner(System.in);
         // TODO 구현 진행
@@ -16,23 +23,23 @@ public class App {
         if (name.isBlank()) {
             throw new IllegalArgumentException("[ERROR] 이름이 공백 혹은 빈 문자열입니다.");
         }
-        if (name.length() > 5) {
+        if (name.length() > MAXIMUM_CAR_NAME_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 이름은 5자 이하여아합니다.");
         }
     }
 
     public static void validateTrial(int trial) {
-        if (trial > 100) {
+        if (trial > MAXIMUM_TRIAL) {
             throw new IllegalArgumentException("[ERROR] 시도 횟수는 100회 이하여야 합니다.");
         }
     }
 
-    public static String[] splitNamesByComma(String input) {
-        String[] names = input.split(",");
-        if (names.length <= 1) {
+    public static String[] splitNamesBySeparator(String input) {
+        String[] names = input.split(SEPARATOR);
+        if (names.length < MINIMUM_PLAYER) {
             throw new IllegalArgumentException("[ERROR] 참가자는 2인 이상이어야 합니다");
         }
-        if (names.length > 10) {
+        if (names.length > MAXIMUM_PLAYER) {
             throw new IllegalArgumentException("[ERROR] 참가자는 10인 이하여야 합니다.");
         }
         return names;
