@@ -81,8 +81,7 @@ public class GameController {
     }
 
     private void validateNames(List<String> names) {
-        HashSet<String> nameSet = new HashSet<>(names);
-
+        HashSet<String> nameSet = new HashSet<>();
         names.forEach(name -> {
             validateName(name);
             checkOverlappingName(nameSet, name);
