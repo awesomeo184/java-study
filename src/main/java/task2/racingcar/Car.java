@@ -14,11 +14,18 @@ public class Car {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
     public void race() {
         int randomValue = RandomUtils.nextInt(MIN_RANDOM_VALUE, MAX_RANDOM_VALUE);
         if (randomValue >= FORWARD_CRITERIA) {
-            position += randomValue;
+            position += 1;
         }
     }
-    // 추가 기능 구현
 }
