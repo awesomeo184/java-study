@@ -45,9 +45,23 @@ public class Race {
         }
     }
 
+    public void displayRace() {
+        for (Car car:cars) {
+            System.out.printf("%s : %s",car.getCarName(),"-".repeat( car.getPosition()));
+        }
+    }
+
+    public void doTrial() {
+        for (int i=0; i<this.cars.size() ;i++) {
+            cars.get(i).tryMove();
+        }
+    }
 
 
     public void doRace(){
-
+        for(int i=0;i<this.trial;i++) {
+            doTrial();
+            displayRace();
+        }
     }
 }
