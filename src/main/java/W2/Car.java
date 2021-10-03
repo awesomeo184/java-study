@@ -10,16 +10,15 @@ public class Car {
         this.name=name;
     }
 
-    //전진시도
     public void tryMove(){
         Random random=new Random();
-        if (random.nextInt(10)>=10){
+        if (random.nextInt(10)>=4){
             this.position++;
         }
     }
     //자동차 이름 정보 출력 메소드
     public void printCarInfo(){
-        System.out.println(this.name);
+        System.out.printf("%s : %d\n",this.name,this.position);
     }
 
     public int getPosition() {
@@ -29,7 +28,5 @@ public class Car {
     public String getCarName() {
         return this.name;
     }
-
-
 
 }
