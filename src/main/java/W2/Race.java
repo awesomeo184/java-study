@@ -29,17 +29,17 @@ public class Race {
     //시도 회수 세팅 메소드
     private void setTrial(Scanner sc) {
         try{
-            System.out.println("시도 회수 입력 :");
+            System.out.println("시도할 회수는 몇회인가요? :");
             this.trial=sc.nextInt();
         }
         catch (Exception e){
-            throw new IllegalArgumentException("잘못된 입력");
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
         }
     }
 
     //자동차 이름 세팅 메소드
     public void setCars(Scanner sc){
-        System.out.println("경주에 참가할 자동차 이름 입력(구분은 쉼표(,)):");
+        System.out.println("경주에 참가할 자동차 이름을 입력해주세요. (이름은 쉼표(,)를 기준으로 구분):");
         String[] input=(sc.nextLine()).split(",");
         String name;
         for (int i=0; i<input.length;i++){
